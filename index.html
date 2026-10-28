@@ -105,3 +105,29 @@ document.getElementById('result').scrollIntoView({behavior:'smooth'});
 </script>
 </body>
 </html>
+<section class="card">
+  <h2>✨ AI Script Writer</h2>
+  <p>Turn your story idea into a movie script.</p>
+
+  <textarea id="scriptIdea"
+    placeholder="Describe your movie idea..."></textarea>
+
+  <button onclick="writeScript()">Create Script</button>
+
+  <div id="scriptResult"></div>
+</section>
+
+<script>
+function writeScript() {
+  const idea = document.getElementById("scriptIdea").value.trim();
+
+  if (!idea) {
+    alert("Please enter your story idea.");
+    return;
+  }
+
+  document.getElementById("scriptResult").textContent =
+    "Your story idea: " + idea +
+    "\n\nAI script generation will be available once an AI service is connected.";
+}
+</script>
