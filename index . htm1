@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grace AI Studio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#100b1e;color:white;font-family:Arial,sans-serif}
+header{padding:25px;background:#1b1230;border-bottom:2px solid #d5aa54}
+h1{color:#f2cc79;margin:0}
+p{line-height:1.6;color:#d9d1e8}
+main{max-width:1000px;margin:auto;padding:30px 20px}
+.hero{text-align:center;padding:45px 10px}
+.hero h2{font-size:36px;color:#f2cc79}
+.card{background:#211635;border:1px solid #604b79;border-radius:15px;padding:25px;margin:20px 0}
+label{display:block;margin:15px 0 8px;color:#f2cc79}
+input,textarea,select{width:100%;padding:14px;border-radius:8px;border:1px solid #65577a;background:#130e22;color:white;font-size:16px}
+textarea{min-height:130px}
+button{background:#d5aa54;color:#160e24;border:0;padding:15px 25px;border-radius:9px;font-weight:bold;font-size:16px;cursor:pointer;margin-top:20px}
+button:hover{background:#f2cc79}
+.badge{display:inline-block;background:#38264f;padding:10px 15px;border-radius:20px;color:#f2cc79}
+footer{text-align:center;padding:30px;color:#bcb1ce}
+</style>
+</head>
+<body>
+<header>
+<h1>✦ Grace AI Studio</h1>
+<p>Your Story. Your Vision. Your Movie.</p>
+</header>
+<main>
+<section class="hero">
+<span class="badge">AI MOVIE CREATION STUDIO</span>
+<h2>Turn Your Imagination Into a Movie</h2>
+<p>Create stories, plan scenes, and bring your creative vision to life.</p>
+</section>
+
+<section class="card">
+<h2>🎬 Movie Creator</h2>
+<label>Movie Title</label>
+<input id="title" placeholder="Enter your movie title">
+
+<label>Choose Your Genre</label>
+<select id="genre">
+<option>Drama</option>
+<option>Faith & Inspiration</option>
+<option>Action</option>
+<option>Romance</option>
+<option>Comedy</option>
+<option>Documentary</option>
+<option>Animation</option>
+<option>Horror</option>
+<option>Adventure</option>
+</select>
+
+<label>Describe Your Story</label>
+<textarea id="story" placeholder="Tell us what your movie is about..."></textarea>
+
+<label>Movie Length</label>
+<select id="length">
+<option>1 minute</option>
+<option>5 minutes</option>
+<option>15 minutes</option>
+<option>30 minutes</option>
+</select>
+
+<button onclick="createPlan()">Create My Movie Plan ✨</button>
+</section>
+
+<section class="card" id="result" style="display:none">
+<h2>🎥 Your Movie Project</h2>
+<div id="details"></div>
+<p><strong>Next step:</strong> AI video generation will be added after the studio is connected to a video-generation service.</p>
+</section>
+</main>
+<footer>© 2026 Grace AI Studio</footer>
+<script>
+function createPlan(){
+const title=document.getElementById('title').value.trim();
+const story=document.getElementById('story').value.trim();
+const genre=document.getElementById('genre').value;
+const length=document.getElementById('length').value;
+if(!title||!story){
+alert('Please enter your movie title and story.');
+return;
+}
+const details=document.getElementById('details');
+details.textContent='';
+[
+['Title',title],
+['Genre',genre],
+['Length',length],
+['Story',story]
+].forEach(function(item){
+const p=document.createElement('p');
+const strong=document.createElement('strong');
+strong.textContent=item[0]+': ';
+p.appendChild(strong);
+p.appendChild(document.createTextNode(item[1]));
+details.appendChild(p);
+});
+document.getElementById('result').style.display='block';
+document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
