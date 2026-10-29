@@ -2,7 +2,11 @@ import os
 from flask import Flask, jsonify
 
 app = Flask(__name__)
-
+@app.after_request
+def allow_website(response):
+    response.headers["Access-Control-Allow-Origin"] = "https://wining8721.github.io"
+    return response
+    
 @app.route("/")
 def home():
     return jsonify({
