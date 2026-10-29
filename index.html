@@ -130,8 +130,20 @@ function writeScript() {
     "Your story idea: " + idea +
     "\n\nAI script generation will be available once an AI service is connected.";
 }
+
+async function checkBackend() {
+  try {
+    const response = await fetch("https://grace-ai-studio.onrender.com/");
+    const data = await response.json();
+    console.log("Grace AI Studio backend:", data.message);
+  } catch (error) {
+    console.log("Backend connection unavailable:", error);
+  }
+}
+
+checkBackend();
+
 </script>
-
-
 </body>
 </html>
+
